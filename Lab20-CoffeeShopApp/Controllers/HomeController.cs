@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lab20_CoffeeShopApp.Models;
 
 namespace Lab20_CoffeeShopApp.Controllers
 {
@@ -35,13 +36,14 @@ namespace Lab20_CoffeeShopApp.Controllers
         }
 
 
-        public ActionResult AddUser(string fname)
+        public ActionResult AddUser(UserInfo NewUser)
         {
-            string result = "Hello " + fname;
+            // validation
+            // to add data from the model to the db
 
-            ViewBag.Result = result;
 
-            return View();
+            // Pass the NewUser model to the AddUser view
+            return View(NewUser);
         }
     }
 }

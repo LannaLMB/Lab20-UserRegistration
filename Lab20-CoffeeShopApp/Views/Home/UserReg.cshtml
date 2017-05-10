@@ -6,19 +6,41 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<h2>User Registration Form</h2>
-<h5>Please Fill Out the Form Below to Become a Member</h5><br />
+<h2 style="text-align:center;">User Registration Form</h2>
+<h5 style="text-align:center;">Please Fill Out the Form Below to Become a Member</h5><br />
 
 
-<form action="/Home/AddUser" method="post">
+<form style="text-align:center; background-color: #ADD8E6; border: 1px;" action="/Home/AddUser" method="post">
 
-    First Name: &nbsp; <input type="text" placeholder="Enter First Name" name="fname" required/><br /><br />
-    Last Name: &nbsp; <input type="text" placeholder="Enter Last Name" name="lname" required/><br /><br />
-    E-Mail: &nbsp; <input type="text" placeholder="Enter Email" name="email" required/><br /><br />
-    Phone Number: &nbsp; <input type="text" placeholder="Enter Phone Number" name="pnumber" required/><br /><br />
-    Password: &nbsp; <input type="password" placeholder="Enter Password" name="pword" required/><br /><br />
+    <label> First Name </label><br />
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="text" placeholder="Enter First Name" name="Userfname" required/><br /><br />
 
-    <input type="submit" value="Register"/>
+    <label> Last Name </label><br />
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="text" placeholder="Enter Last Name" name="Userlname" required /><br /><br />
+
+    <label> E-Mail </label><br />
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="email" placeholder="someone@something.com" name="Useremail" required /><br /><br />
+
+    <label> Phone Number </label><br />
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="tel" placeholder="000-000-0000" name="pnumber" required /><br /><br />
+
+    <label> Password </label><br />
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="password" placeholder="Enter Password" name="Userpword" required /><br /><br />
+
+    <label> Birthday </label><br />
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="date" name="Userbday" /><br /><br />
+
+    <label> Pick a Color </label><br />
+    <select id="color" style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="date" name="Userbday" /><br /><br />
+        <option value = "1"> Green </option>
+        <option value = "2"> Blue </option>
+        <option value = "3"> Orange </option>
+        <option value = "4"> Yellow </option>
+        <option value = "4"> Pink </option>
+        <option value = "4"> Red </option>
+    </select><br /><br />
+
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; background-color: #4CAF50; border: none; color: white;" type="submit" value="Register"/>
 
 
 
