@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "UserReg";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<h2>User Registration Form</h2>
+<h5>Please Fill Out the Form Below to Become a Member</h5><br />
+
+
+<form action="/Home/AddUser" method="post">
+
+    First Name: &nbsp; <input type="text" placeholder="Enter First Name" name="fname" required/><br /><br />
+    Last Name: &nbsp; <input type="text" placeholder="Enter Last Name" name="lname" required/><br /><br />
+    E-Mail: &nbsp; <input type="text" placeholder="Enter Email" name="email" required/><br /><br />
+    Phone Number: &nbsp; <input type="text" placeholder="Enter Phone Number" name="pnumber" required/><br /><br />
+    Password: &nbsp; <input type="password" placeholder="Enter Password" name="pword" required/><br /><br />
+
+    <input type="submit" value="Register"/>
+
+
+
+</form>
+
