@@ -46,11 +46,11 @@ namespace Lab20_CoffeeShopApp.Controllers
         {
             CoffeeShopDBEntities CoffDB = new CoffeeShopDBEntities();
 
-            CoffDB .Items.Add(NewItem);
+            CoffDB.Items.Add(NewItem);
 
             CoffDB.SaveChanges();
 
-            return RedirectToAction("ListAllItems");
+            return RedirectToAction("ListItems");
         }
 
         // Delete Items
@@ -68,7 +68,7 @@ namespace Lab20_CoffeeShopApp.Controllers
 
                 CoffeeShopDBEntities CoffDB = new CoffeeShopDBEntities();
 
-                // 1. Find the customer that I need to delete
+                // 1. Find the Item that I need to delete
 
                 Item ToDelete = CoffDB.Items.Find(ItemID);
 
@@ -79,7 +79,7 @@ namespace Lab20_CoffeeShopApp.Controllers
                 }
 
 
-                // 2. Remove the object from the list of Customers
+                // 2. Remove the object from the list of Items
                 CoffDB.Items.Remove(ToDelete);
 
 
@@ -87,13 +87,13 @@ namespace Lab20_CoffeeShopApp.Controllers
                 CoffDB.SaveChanges(); // save changes to DB
 
 
-                // Execute the ListAllCustomers Action
-                return RedirectToAction("ListAllCustomers", "Northwind");
+                // Execute the ListItems Action
+                return RedirectToAction("ListItems", "CoffeeShop");
             }
 
             catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
             {
-                ViewBag.ErrorMessage = "You Cannot Delete a Customer With Orders!";
+                ViewBag.ErrorMessage = "You Cannot Delete an Item With an ID!";
 
                 return View("ErrorMessages");
             }
@@ -115,6 +115,31 @@ namespace Lab20_CoffeeShopApp.Controllers
             Item ToFind = CoffDB.Items.Find(ItemID);
 
             return View("ItemDetails", ToFind);
+        }
+
+
+        // Save Updated Items
+        public ActionResult SaveUpdates(Item ToBeUpdated)
+        {
+            CoffeeShopDBEntities CoffDB = new CoffeeShopDBEntities();
+
+            // Find the Original Customer Record
+            Item ToFind = CoffDB.Items.Find(ToBeUpdated.ItemID);
+
+            ToFind.ItemID = ToBeUpdated.ItemID;
+
+            ToFind.Name = ToBeUpdated.Name;
+
+            ToFind.Description = ToBeUpdated.Description;
+
+            ToFind.Quantity = ToBeUpdated.Quantity;
+
+            ToFind.Price = ToBeUpdated.Price;
+
+
+            CoffDB.SaveChanges();
+
+            return RedirectToAction("ListItems");
         }
 
 
@@ -142,7 +167,6 @@ namespace Lab20_CoffeeShopApp.Controllers
             CoffeeShopDBEntities CoffDB = new CoffeeShopDBEntities();
 
 
-
             //Lambda Expression
             return CoffDB.Items.Select(x => x.ItemID).Distinct().ToList();
 
@@ -155,11 +179,13 @@ namespace Lab20_CoffeeShopApp.Controllers
             return View();
         }
 
+
         // GET: CoffeeShop/Create
         public ActionResult Create()
         {
             return View();
         }
+
 
         // POST: CoffeeShop/Create
         [HttpPost]
@@ -177,11 +203,13 @@ namespace Lab20_CoffeeShopApp.Controllers
             }
         }
 
+
         // GET: CoffeeShop/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
+
 
         // POST: CoffeeShop/Edit/5
         [HttpPost]
@@ -199,11 +227,13 @@ namespace Lab20_CoffeeShopApp.Controllers
             }
         }
 
+
         // GET: CoffeeShop/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
+
 
         // POST: CoffeeShop/Delete/5
         [HttpPost]
