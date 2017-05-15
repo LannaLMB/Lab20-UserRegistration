@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CoffeeShopDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="Name" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="Description" Type="char" MaxLength="100" Nullable="false" />
+    <Property Name="Quantity" Type="smallint" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CoffeeShopDB.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Password" />
+      <PropertyRef Name="PhoneNumber" />
+    </Key>
+    <Property Name="FirstName" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="LastName" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="Email" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Color" Type="char" MaxLength="6" />
+    <Property Name="CoffeeLover" Type="tinyint" />
+  </EntityType>
+  <EntityContainer Name="CoffeeShopDBModelStoreContainer">
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Users].[FirstName] AS [FirstName], 
+    [Users].[LastName] AS [LastName], 
+    [Users].[Email] AS [Email], 
+    [Users].[Password] AS [Password], 
+    [Users].[PhoneNumber] AS [PhoneNumber], 
+    [Users].[Birthday] AS [Birthday], 
+    [Users].[Color] AS [Color], 
+    [Users].[CoffeeLover] AS [CoffeeLover]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

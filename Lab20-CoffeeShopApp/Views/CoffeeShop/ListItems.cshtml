@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "ListItems";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+
+
+<h2 style="text-align:center; font-weight:bold;">Coffee Products</h2><br /><br />
+
+
+@* Search Coffee in Drop Down Box
+<form action="SearchItem">
+
+    Find Your Coffee: <input type="submit" value="Search" />
+    <select name="Name">
+        @foreach (var element in ViewBag.Item)
+        {
+        <option value="@element">@element</option> }
+
+
+
+    </select>
+
+</form>
+
+<br />
+<br />*@
+
+
+
+<table align="center" border="1" style="text-align:center">
+
+    @*Column ItemID Sized, Centered, and Colored*@
+    <tr> <th col width="100" style="text-align:center; background-color:peachpuff; font-weight:bold;"> Item ID </th>  
+    
+
+
+    @*Column Product Name Sized, Centered, and Colored*@
+        <th col width="150" style="text-align:center; background-color:powderblue; font-weight:bold;"> Product Name </th>  
+
+
+
+    @*Column Description Sized, Centered, and Colored*@
+        <th col width="300" style="text-align:center; background-color:powderblue; font-weight:bold;"> Description </th> 
+    
+    
+
+    @*Column Quantity Sized, Centered, and Colored*@
+        <th col width="75" style="text-align:center; background-color:powderblue; font-weight:bold;"> Quantity </th>  
+    
+    
+
+    @*Column Price Sized, Centered, and Colored*@
+        <th col width="90" style="text-align:center; background-color:lightgreen; font-weight:bold;"> Price </th>
+
+
+
+    @*Filling the Table in With Data*@
+    @foreach (var element in ViewBag.ItemList)
+    {
+        <tr>
+            <td style="text-align:center; background-color:peachpuff; font-weight:bold;">@element.ItemID</td>
+            <td style="text-align:center; background-color:powderblue;">@element.Name</td>
+            <td style="text-align:center; background-color:powderblue;">@element.Description</td>
+            <td style="text-align:center; background-color:powderblue; font-style:italic;">@element.Quantity</td>
+            <td style="text-align:center; background-color:lightgreen;">$@element.Price</td>
+        </tr>
+    }
+
+</table>
+

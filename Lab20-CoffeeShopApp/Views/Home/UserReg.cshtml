@@ -10,7 +10,8 @@
 <h5 style="text-align:center;">Please Fill Out the Form Below to Become a Member</h5><br />
 
 
-<form style="text-align:center; background-color: #ADD8E6; border: 1px;" action="/Home/AddUser" method="post">
+<form style="text-align:center; background-color: #ADD8E6; border: 1px;" action="/Home/AddUser" method="post"
+      oninput="x.value=parseInt(range.value)+parseInt(0)">
 
     <label> First Name </label><br />
     <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="text" placeholder="Enter First Name" name="Userfname" required/><br /><br />
@@ -31,16 +32,23 @@
     <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="date" name="Userbday" /><br /><br />
 
     <label> Pick a Color </label><br />
-    <select id="color" style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" type="date" name="Userbday" /><br /><br />
-        <option value = "1"> Green </option>
-        <option value = "2"> Blue </option>
-        <option value = "3"> Orange </option>
-        <option value = "4"> Yellow </option>
-        <option value = "4"> Pink </option>
-        <option value = "4"> Red </option>
+    <select style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;" /><br /><br />
+        <option value = "Green"> Green </option>
+        <option value = "Blue"> Blue </option>
+        <option value = "Orange"> Orange </option>
+        <option value = "Yellow"> Yellow </option>
+        <option value = "Pink"> Pink </option>
+        <option value = "Red"> Red </option>
     </select><br /><br />
 
-    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; background-color: #4CAF50; border: none; color: white;" type="submit" value="Register"/>
+    
+
+    <label>How Much Do You Love Coffee?</label><br />
+    <strong> YUCK - I Hate It! </strong> &nbsp; <input type="range" name="Amount" id="range" value="0" min="0" max="20"/>
+    <output name="x" for="range"></output> &nbsp; <strong> That's Too Much Coffee - Said No One EVER! </strong><br /><br />
+
+    <input style="text-align:center; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; background-color: #4CAF50; 
+        border: none; color: white;" type="submit" value="Register"/><br /><br />
 
 
 
