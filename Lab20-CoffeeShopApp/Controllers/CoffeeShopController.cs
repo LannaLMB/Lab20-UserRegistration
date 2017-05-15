@@ -19,7 +19,7 @@ namespace Lab20_CoffeeShopApp.Controllers
             ViewBag.ItemList= ItemList;
             ViewBag.Names = GetName();
 
-            return View("Home/Index");
+            return View();
         }
 
 
@@ -35,6 +35,87 @@ namespace Lab20_CoffeeShopApp.Controllers
 
         }
 
+
+        public ActionResult AddItem()
+        {
+            return View();
+        }
+
+        // Save The New Item Added
+        public ActionResult SaveNewItem(Item NewItem)
+        {
+            CoffeeShopDBEntities CoffDB = new CoffeeShopDBEntities();
+
+            CoffDB .Items.Add(NewItem);
+
+            CoffDB.SaveChanges();
+
+            return RedirectToAction("ListAllItems");
+        }
+
+        // Delete Items
+        public ActionResult DeleteItem(string ItemID)
+        {
+            try
+            {
+                if (ItemID == null)
+                {
+
+                    ViewBag.ErrorMessage = "Nice Try!";
+                    return View("ErrorMessages");
+                }
+
+
+                CoffeeShopDBEntities CoffDB = new CoffeeShopDBEntities();
+
+                // 1. Find the customer that I need to delete
+
+                Item ToDelete = CoffDB.Items.Find(ItemID);
+
+                if (ToDelete == null)
+                {
+                    ViewBag.ErrorMessage = "Hahahaha";
+                    return View("ErrorMessages");
+                }
+
+
+                // 2. Remove the object from the list of Customers
+                CoffDB.Items.Remove(ToDelete);
+
+
+                // 3. Perform the changes onto the DB
+                CoffDB.SaveChanges(); // save changes to DB
+
+
+                // Execute the ListAllCustomers Action
+                return RedirectToAction("ListAllCustomers", "Northwind");
+            }
+
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                ViewBag.ErrorMessage = "You Cannot Delete a Customer With Orders!";
+
+                return View("ErrorMessages");
+            }
+
+            catch (Exception ex)
+            {
+
+                ViewBag.ErrorMessage = "Something Horrible Happened";
+
+                return View("ErrorMessages");
+            }
+        }
+
+        // Update Items
+        public ActionResult UpdateItem(string ItemID)
+        {
+            CoffeeShopDBEntities CoffDB = new CoffeeShopDBEntities();
+
+            Item ToFind = CoffDB.Items.Find(ItemID);
+
+            return View("ItemDetails", ToFind);
+        }
 
 
         // Search for the Name of a Coffee in the Drop Down Box

@@ -7,11 +7,12 @@
 
 
 
-
-
-
-
 <h2 style="text-align:center; font-weight:bold;">Coffee Products</h2><br /><br />
+
+<br />
+<br />
+<a href="/CoffeeShop/AddItem">Add a New Customer</a>
+<br />
 
 
 @* Search Coffee in Drop Down Box
@@ -47,7 +48,7 @@
 
 
     @*Column Description Sized, Centered, and Colored*@
-        <th col width="300" style="text-align:center; background-color:powderblue; font-weight:bold;"> Description </th> 
+        <th col width="360" style="text-align:center; background-color:powderblue; font-weight:bold;"> Description </th> 
     
     
 
@@ -60,6 +61,15 @@
         <th col width="90" style="text-align:center; background-color:lightgreen; font-weight:bold;"> Price </th>
 
 
+    @*Column Delete Sized, Centered, and Colored*@
+        <th col width="90" style="text-align:center; background-color:lightgray; font-weight:bold;"> Delete </th>
+
+
+    @*Column Update Sized, Centered, and Colored*@
+        <th col width="90" style="text-align:center; background-color:lightgray; font-weight:bold;"> Update </th>
+       
+
+
 
     @*Filling the Table in With Data*@
     @foreach (var element in ViewBag.ItemList)
@@ -70,6 +80,8 @@
             <td style="text-align:center; background-color:powderblue;">@element.Description</td>
             <td style="text-align:center; background-color:powderblue; font-style:italic;">@element.Quantity</td>
             <td style="text-align:center; background-color:lightgreen;">$@element.Price</td>
+            <td col width="30" style="text-align:center; background-color:lightgray;"><a href="DeleteItem?ItemID=@element.ItemID" onclick="return confirm('Are You Sure?')"><span class="glyphicon glyphicon-remove"></span></a></td>
+            <td col width="30" style="text-align:center; background-color:lightgray;"><a href="UpdateItem?ItemID=@element.ItemID"><span class="glyphicon glyphicon-pencil"></span></a></td>
         </tr>
     }
 
